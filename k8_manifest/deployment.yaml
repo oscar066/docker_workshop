@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dev-webapp-deployment
+  namespace: default
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: dev-webapp
+  template:
+    metadata:
+      labels:
+        app: dev-webapp
+    spec:
+      containers:
+      - name: dev-webapp
+        image: docker.io/samuelkadima/python4k8:v1.0.0
+        ports:
+        - containerPort: 8000
